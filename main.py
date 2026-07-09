@@ -1,5 +1,9 @@
+import numpy as np
+
+
 def main():
-    print("Hello from audiometry!")
+    freqs = np.geomspace(125, 8000, 7)
+    print(np.round(freqs))
 
 
 if __name__ == "__main__":
