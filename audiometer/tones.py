@@ -1,6 +1,7 @@
 import numpy as np
 
 SAMPLE_RATE = 48000
+AMPLITUDE = 0.5
 
 
 def sine(
@@ -15,7 +16,7 @@ def sine(
         endpoint=False,
     )
 
-    wave = np.sin(2 * np.pi * frequency * t)
+    wave = AMPLITUDE * np.sin(2 * np.pi * frequency * t)
 
     gain = 10 ** (gain_db / 20)
 
