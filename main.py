@@ -1,8 +1,20 @@
-from audiometer.player import play_left, play_right
-from audiometer.tones import sine
+from audiometer.calibrator import calibrate
 
-left_sine = sine(1000, gain_db=0)
-right_sine = sine(1000, gain_db=0)
+FREQUENCIES = [
+    125,
+    250,
+    500,
+    1000,
+    2000,
+    4000,
+    8000,
+]
 
-play_left(left_sine)
-play_right(right_sine)
+print("The worst ear:")
+print("1) Left")
+print("2) Right")
+
+r = input("> ")
+
+curve = {f: calibrate(f, r) for f in FREQUENCIES}
+print(curve)

@@ -1,16 +1,22 @@
 import numpy as np
 import sounddevice as sd
 
-from .tones import SAMPLE_RATE
+from audiometer.tones import SAMPLE_RATE
 
 
-def play_left(signal):
-    stereo = np.column_stack((signal, np.zeros_like(signal)))
+def play(sine):
+    stereo = np.column_stack((sine, sine))
     sd.play(stereo, SAMPLE_RATE)
     sd.wait()
 
 
-def play_right(signal):
-    stereo = np.column_stack((np.zeros_like(signal), signal))
+def play_left(sine):
+    stereo = np.column_stack((sine, np.zeros_like(sine)))
+    sd.play(stereo, SAMPLE_RATE)
+    sd.wait()
+
+
+def play_right(sine):
+    stereo = np.column_stack((np.zeros_like(sine), sine))
     sd.play(stereo, SAMPLE_RATE)
     sd.wait()
